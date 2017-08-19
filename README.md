@@ -13,7 +13,7 @@ Server listing can be filtered with the following criteria:
 
 ### How do I get set up? ###
 
-* Clone this repo by running the following command: `git clone ....git`
+* Clone this repo by running the following command: `git clone https://peterojo@bitbucket.org/peterojo/lw-servers.git`
 * Change directories into the newly cloned directory: `cd lw-servers`
 * Install dependencies: `composer install`
 * Copy example env file and edit to set up your local config details: `cp .env.example .env`

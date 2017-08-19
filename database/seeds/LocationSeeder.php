@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Location;
 use Illuminate\Database\Seeder;
 
 class LocationSeeder extends Seeder
@@ -11,7 +12,7 @@ class LocationSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('locations')->insert([
+        Location::insert([
         	[ 'name' => 'AmsterdamAMS-01' ],
         	[ 'name' => 'DallasDAL-10' ],
         	[ 'name' => 'FrankfurtFRA-10' ],
