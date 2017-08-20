@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Filters\ServersFilters;
 use Illuminate\Database\Eloquent\Model;
 
 class Server extends Model
@@ -21,6 +22,7 @@ class Server extends Model
 	public function formattedCapacity () {
 		$unit = "GB";
 		$value = $this->strg_capacity_gb;
+		
 		if ($value >= 1000) {
 			$value = $value/1000;
 			$unit = "TB";
@@ -31,5 +33,15 @@ class Server extends Model
 	
 	public function formattedStorageString () {
 		return $this->strg_quantity." X ".$this->formattedCapacity()." ".$this->strg_type;
+    }
+	
+	/**
+	 * @param \Illuminate\Database\Eloquent\Builder $builder
+	 * @param ServersFilters $filters
+	 *
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public function scopeFilter ( $builder, ServersFilters $filters ) {
+		return $filters->apply($builder);
     }
 }

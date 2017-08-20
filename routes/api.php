@@ -17,5 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', ['as' => 'servers.index', 'uses' => 'ServersController@index']);
-Route::get('/filter', ['as' => 'servers.filter', 'uses' => 'ServersController@filter']);
+Route::get('/', ['as' => 'servers.index', 'uses' => 'API\ServersController@index']);
+Route::get('/filter', ['as' => 'servers.filter', 'uses' => 'API\ServersController@filter']);

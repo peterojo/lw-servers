@@ -16,6 +16,7 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
 	        $table->engine = 'MyISAM';
             $table->increments('id');
+            $table->string('abbr', 4)->index();
             $table->string('name');
         });
     }

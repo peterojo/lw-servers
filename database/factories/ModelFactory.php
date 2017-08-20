@@ -41,6 +41,7 @@ $factory->define(App\Models\Server::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Models\Location::class, function (Faker\Generator $faker) {
 	return [
-		'name' => $faker->city
+		'abbr' => $faker->citySuffix,
+		'name'  => $faker->city
 	];
 });

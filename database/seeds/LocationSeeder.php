@@ -13,13 +13,13 @@ class LocationSeeder extends Seeder
     public function run()
     {
         Location::insert([
-        	[ 'name' => 'AmsterdamAMS-01' ],
-        	[ 'name' => 'DallasDAL-10' ],
-        	[ 'name' => 'FrankfurtFRA-10' ],
-        	[ 'name' => 'Hong KongHKG-10' ],
-        	[ 'name' => 'San FranciscoSFO-12' ],
-        	[ 'name' => 'SingaporeSIN-11' ],
-        	[ 'name' => 'Washington D.C.WDC-01' ]
+        	[ 'abbr' => 'AMS', 'name' => 'AmsterdamAMS-01' ],
+        	[ 'abbr' => 'DAL', 'name' => 'DallasDAL-10' ],
+        	[ 'abbr' => 'FRA', 'name' => 'FrankfurtFRA-10' ],
+        	[ 'abbr' => 'HKG', 'name' => 'Hong KongHKG-10' ],
+        	[ 'abbr' => 'SFO', 'name' => 'San FranciscoSFO-12' ],
+        	[ 'abbr' => 'SIN', 'name' => 'SingaporeSIN-11' ],
+        	[ 'abbr' => 'WDC', 'name' => 'Washington D.C.WDC-01' ]
         ]);
     }
 }
