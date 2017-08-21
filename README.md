@@ -6,10 +6,10 @@ This is a Server Listing app, which was built as a PHP Developer application int
 
 Servers are listed on the index page.
 Server listing can be filtered with the following criteria:
-- Storage
-- RAM
-- Harddisk type
-- Location
+* Storage
+* RAM
+* Harddisk type
+* Location
 
 ### How do I get set up? ###
 

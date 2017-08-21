@@ -3,17 +3,18 @@
 namespace App\Filters;
 
 use App\Models\Location;
+use Illuminate\Support\Facades\DB;
 
 class ServersFilters extends Filters
 {
 	protected $filters = ['min_storage', 'max_storage', 'ram', 'disk_type', 'location'];
 	
 	public function min_storage ( $min ) {
-		return $this->builder->where('strg_capacity_gb', '>=', $min);
+		return $this->builder->whereRaw('(strg_quantity*strg_capacity_gb) >= '.$min)->from(DB::raw('servers'));
 	}
 	
 	public function max_storage ( $max ) {
-		return $this->builder->where('strg_capacity_gb', '<=', $max);
+		return $this->builder->whereRaw('(strg_quantity*strg_capacity_gb) <= '.$max);
 	}
 	
 	public function ram ( $sizes ) {
