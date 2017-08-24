@@ -10,25 +10,14 @@ use App\Transformers\ServerTransformer;
 class ServersController extends Controller
 {
 	/**
-	 * Loads all records
-	 *
-	 * @return \Illuminate\Http\JsonResponse
-	 */
-	public function index () {
-		$servers = Server::all();
-		
-		return $this->transformedResponse($servers);
-    }
-	
-	/**
 	 * Applies request filters on server model and returns response
 	 *
 	 * @param ServersFilters $filters
 	 *
 	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function filter ( ServersFilters $filters ) {
-		$servers = Server::filter($filters)->get();
+	public function index ( ServersFilters $filters ) {
+		$servers = Server::filter($filters)->paginate(20);
 		
 		return $this->transformedResponse($servers);
     }

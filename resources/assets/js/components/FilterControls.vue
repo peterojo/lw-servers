@@ -71,33 +71,37 @@
 
     export default {
         components: { vueSlider },
+
         data() {
             return {
-                storageRange: ['0', '0'],
-                ramSizes: [],
-                hardDiskType: "",
-                selectedlocation: "",
-                rangeSlider: {
-                    data: [
+                query               : {},
+                ramSizes            : [],
+                locations           : [],
+                hardDiskType        : "",
+                storageRange        : ['0', '0'],
+                selectedlocation    : "",
+                rangeSlider         : {
+                    data            : [
                         '0', '250GB', '500GB', '1TB', '2TB', '4TB', '8TB', '12TB', '16TB', '24TB', '32TB'
                     ],
-                    tooltipDir: 'bottom'
-                },
-                locations: [],
-                query: {}
+                    tooltipDir      : 'bottom'
+                }
             }
         },
+
         watch: {
             ramSizes: function() {
                 this.ramsChanged();
-            },
+            }
         },
+
         methods: {
-            pushQuery() {
+            pushQuery()
+            {
                 if (_.keys(this.query).length > 0) {
                     this.$router.push({
-                        path: 'filter',
-                        query: this.query
+                        path    : 'filter',
+                        query   : this.query
                     });
                 } else {
                     this.$router.push({
@@ -105,6 +109,7 @@
                     });
                 }
             },
+
             rangeChanged()
             {
                 if (!(this.storageRange[0]=='0' && this.storageRange[1]=='0')) {
@@ -116,6 +121,7 @@
                 }
                 this.pushQuery();
             },
+
             ramsChanged()
             {
                 if (this.ramSizes.length > 0) {
@@ -125,6 +131,7 @@
                 }
                 this.pushQuery();
             },
+
             diskTypeChanged()
             {
                 if (this.hardDiskType) {
@@ -134,6 +141,7 @@
                 }
                 this.pushQuery();
             },
+
             locationChanged()
             {
                 if (this.selectedlocation) {
@@ -143,13 +151,14 @@
                 }
                 this.pushQuery();
             },
+
             clearFilters()
             {
-                this.storageRange = ['0', '0'];
+                this.query = {};
                 this.ramSizes = [];
                 this.hardDiskType = "";
+                this.storageRange = ['0', '0'];
                 this.selectedlocation = "";
-                this.query = {};
 
                 setTimeout(() => {
                     this.$router.push({
@@ -157,6 +166,7 @@
                     });
                 });
             },
+
             fetchLocations()
             {
                 axios.get(route('locations.index'))
@@ -165,10 +175,12 @@
                     });
             }
         },
+
         mounted()
         {
             this.fetchLocations();
         },
+
         computed: {
             hasFilters()
             {
@@ -184,15 +196,16 @@
     .filter-heading {
         border-bottom: 2px solid #1f648b;
         padding-bottom: 10px;
+
         & > h4 {
             font-weight:200;
             letter-spacing: 1rem;
         }
-
     }
+
     .filter {
-        border-bottom: 1px #d4d4d4 solid;
         padding-top: 10px;
+        border-bottom: 1px #d4d4d4 solid;
         padding-bottom: 20px;
 
         &.filter--btm-padding {

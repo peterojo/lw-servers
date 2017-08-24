@@ -13,16 +13,16 @@ class ServerListingTest extends TestCase
 	use DatabaseMigrations;
 	
     /** @test */
-    public function it_lists_all_servers_in_database()
+    public function it_paginates_listing_to_20_servers()
     {
-    	# Given that we have 5 servers in DB
-        $servers = factory(Server::class, 5)->create();
+    	# Given that we have 25 servers in database
+        factory(Server::class, 25)->create();
         
-        # When we call the index api
-        $response = $this->get(route('servers.index'));
+        # When we call the filter api
+        $response = $this->post(route('servers.filter'))->json();
         
-        # It loads all servers
-        $this->assertEquals($this->transformServerData($servers), $response->json());
+        # It loads only 20 servers
+        $this->assertCount(20, $response['data']);
     }
     
     /** @test */
@@ -36,7 +36,7 @@ class ServerListingTest extends TestCase
     	$serverWithStorageAboveRange = factory(Server::class)->create(['strg_quantity' => 4, 'strg_capacity_gb' => 1500]);
     	
     	# When we call the filter api with min and max parameters
-    	$response = $this->get(route('servers.filter')."?min_storage=1000&max_storage=4000")->json();
+    	$response = $this->post(route('servers.filter')."?min_storage=1TB&max_storage=4TB")->json();
 	    
     	# It loads only the 3 records within the range
 	    $this->assertCount(3, $response['data']);
@@ -61,7 +61,7 @@ class ServerListingTest extends TestCase
         factory(Server::class)->create(['ram_size' => '64gb']);
         
         # When we call the filter api with a list of ram sizes
-        $response = $this->get(route('servers.filter')."?ram=4gb,8gb,64gb")->json();
+        $response = $this->post(route('servers.filter')."?ram=4gb,8gb,64gb")->json();
         
         # It returns only the servers with ram sizes specified
         $this->assertCount(4, $response['data']);
@@ -79,7 +79,7 @@ class ServerListingTest extends TestCase
         $sata2DiskServer = factory(Server::class)->create(['strg_type' => 'SATA2']);
         
         # When we call the filter api with the disk_type parameter
-        $response = $this->get(route('servers.filter')."?disk_type=SSD")->json();
+        $response = $this->post(route('servers.filter')."?disk_type=SSD")->json();
         
         # It returns only the servers with the specified disk type
         $this->assertCount(3, $response['data']);
@@ -100,7 +100,7 @@ class ServerListingTest extends TestCase
         $serverInOtherLocation = factory(Server::class)->create(['location_id' => $otherLocation->id]);
         
         # When we call the filter api with the location parameter
-        $response = $this->get(route('servers.filter')."?location=AMS")->json();
+        $response = $this->post(route('servers.filter')."?location=AMS")->json();
 	
         # It should return only the servers from the specified location
 	    $this->assertCount(3, $response['data']);

@@ -10,10 +10,12 @@ class ServersFilters extends Filters
 	protected $filters = ['min_storage', 'max_storage', 'ram', 'disk_type', 'location'];
 	
 	public function min_storage ( $min ) {
+		$min = raw_gb_capacity($min);
 		return $this->builder->whereRaw('(strg_quantity*strg_capacity_gb) >= '.$min)->from(DB::raw('servers'));
 	}
 	
 	public function max_storage ( $max ) {
+		$max = raw_gb_capacity($max);
 		return $this->builder->whereRaw('(strg_quantity*strg_capacity_gb) <= '.$max);
 	}
 	

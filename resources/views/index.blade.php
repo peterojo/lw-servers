@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row">
-	    <div class="col-md-3">
+	    <div class="col-sm-3">
 		   <filter-controls></filter-controls>
 	    </div>
-        <div class="col-md-9">
+        <div class="col-sm-9">
             <div class="panel panel-default">
-                <div class="panel-heading">LeaseWeb Server Listing</div>
+                <div class="panel-heading"><h3>LeaseWeb Server Listing</h3></div>
 
                 <div class="panel-body">
                     <server-listing></server-listing>
