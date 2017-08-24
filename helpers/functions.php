@@ -2,6 +2,13 @@
 
 if (!function_exists('currency_symbol'))
 {
+	/**
+	 * Converts currency codes into currency symbols for display.
+	 *
+	 * @param $currency_code
+	 *
+	 * @return null|string
+	 */
 	function currency_symbol ($currency_code) {
 		return Symfony\Component\Intl\Intl::getCurrencyBundle()
 											->getCurrencySymbol($currency_code);
@@ -10,6 +17,14 @@ if (!function_exists('currency_symbol'))
 
 if (!function_exists('raw_gb_capacity'))
 {
+	/**
+	 * Gets the actual storage capacity in gigabytes
+	 * from formatted strings such as '4TB', '250GB', etc.
+	 *
+	 * @param $formatted
+	 *
+	 * @return int
+	 */
 	function raw_gb_capacity ($formatted) {
 		$formatted = strtolower($formatted);
 		if (ends_with($formatted, "tb")) {

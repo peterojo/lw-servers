@@ -12,7 +12,7 @@ class ServersController extends Controller
 	/**
 	 * Applies request filters on server model and returns response
 	 *
-	 * @param ServersFilters $filters
+	 * @param \App\Filters\ServersFilters $filters
 	 *
 	 * @return \Illuminate\Http\JsonResponse
 	 */

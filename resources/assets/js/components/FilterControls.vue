@@ -7,12 +7,12 @@
         <div class="filter filter--btm-padding">
             <label>Storage Capacity</label>
             <vue-slider
-                    v-model="storageRange"
-                    :data="rangeSlider.data"
-                    :piecewise="true"
-                    :clickable="false"
-                    :tooltip-dir="rangeSlider.tooltipDir"
-                    @drag-end="rangeChanged"></vue-slider>
+                v-model="storageRange"
+                :data="rangeSlider.data"
+                :piecewise="true"
+                :clickable="false"
+                :tooltip-dir="rangeSlider.tooltipDir"
+                @drag-end="rangeChanged"></vue-slider>
         </div>
         <div class="filter">
             <label>RAM Size</label>
