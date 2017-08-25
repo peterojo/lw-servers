@@ -1,5 +1,9 @@
 # API Documentation
 
+## API List
+* [Filter Servers](#filter-servers)
+* [List Locations](#list-locations)
+
 **Filter Servers**
 ----
   Returns a paginated filtered list of servers based on query parameters or a paginated list of all servers if no query parameters are sent.

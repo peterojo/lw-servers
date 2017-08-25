@@ -17,7 +17,7 @@
 **Step 1:**
 Clone this repository
 ```bash
-git clone https://peterojo@bitbucket.org/peterojo/lw-servers.git
+git clone https://github.com/peterojo/lw-servers.git 
 ```
 
 **Step 2:**
