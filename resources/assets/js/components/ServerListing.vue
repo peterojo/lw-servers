@@ -63,7 +63,7 @@
                 let images = [];
 
                 if (this.randomImages.length > 0) {
-                    _.each(this.randomImages, image => {
+                    this._.each(this.randomImages, image => {
                         images.push(image.urls.small);
                     });
                 }

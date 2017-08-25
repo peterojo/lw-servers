@@ -1,6 +1,7 @@
 /node_modules
 /public/js/app.js
 /public/css/app.css
+/public/fonts/vendor/bootstrap-sass/bootstrap/*
 /storage/*.key
 /vendor
 /.idea

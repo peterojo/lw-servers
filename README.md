@@ -1,8 +1,10 @@
 # README #
 
 This is a Server Listing app, which was built as a PHP Developer application interview exercise for LeaseWeb
+### Demo
+Click [here](http://lw-servers.haxolutely.com) to see a demo
 
-### How It Works ###
+### How It Works
 
 Servers are listed on the index page.
 Server listing can be filtered with the following criteria:
@@ -11,12 +13,11 @@ Server listing can be filtered with the following criteria:
 * Harddisk type
 * Location
 
-### How do I get set up? ###
+### Click here for setup instructions?
 
-* Clone this repo by running the following command: `git clone https://peterojo@bitbucket.org/peterojo/lw-servers.git`
-* Change directories into the newly cloned directory: `cd lw-servers`
-* Install dependencies: `composer install`
-* Copy example env file and edit to set up your local config details: `cp .env.example .env`
-* Generate application key: `php artisan key:generate`
-* Serve application: `php artisan serve`
+[SETUP.md](./SETUP.md)
+
+### Click here to see the API documentation
+
+[APIDOCS.md](./APIDOCS.md)
 

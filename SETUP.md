@@ -54,10 +54,14 @@ php artisan migrate --seed
 ```
 
 **Step 7:**
-Make sure `storage` and `bootstrap/cache` directories are writable by the server
+Make sure `storage` and `bootstrap/cache` directories are writable by the server.
+
 ```
 sudo chmod -R 755 storage && sudo chmod -R 755 bootstrap/cache
 ```
+**_Side Note:_**
+I contributed this feature to the [laravel/installer](https://github.com/laravel/installer/commit/7f70b9fb8e8ec0da042baee93745c9f152d200eb) package
+
 
 **Step 8:**
 Install and build front-end dependencies
@@ -71,9 +75,17 @@ Serve up application using Laravel development server
 php artisan serve
 ```
 ---
+**Preview**
+----
 Now, you should be able to preview the application in your browser by navigating to 
 [http://127.0.0.1:8000](http://127.0.0.1:8000>)
 
-
-
 Enjoy!
+
+---
+**Testing**
+----
+You can run all tests using phpunit
+```
+phpunit
+```
