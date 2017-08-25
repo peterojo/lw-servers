@@ -12,7 +12,8 @@
             </div>
             <div v-for="server in servers" class="col-sm-6 col-md-4 col-lg-3 listing">
                 <div class="listing__image">
-                    <img src="http://placehold.it/200X150" alt="Placeholder" class="img-thumbnail">
+                    <img v-if="loadingImages" src="http://placehold.it/200X134?text=Loading+random+image..." alt="Loading..." class="img-thumbnail">
+                    <img v-else :src="filteredRandomImages[_.random(0, randomImages.length-1)]" alt="Random Image" class="img-thumbnail">
                 </div>
                 <div class="listing__title">
                     <h5>{{ server.model }}</h5>
@@ -39,7 +40,10 @@
             return {
                 page    : 1,
                 servers : [],
-                loading : true
+                loading : true,
+                randomImages: [],
+                loadingImages: true,
+                _:null
             }
         },
 
@@ -52,6 +56,19 @@
             maxTotal()
             {
                 return this.page * 20;
+            },
+
+            filteredRandomImages()
+            {
+                let images = [];
+
+                if (this.randomImages.length > 0) {
+                    _.each(this.randomImages, image => {
+                        images.push(image.urls.small);
+                    });
+                }
+
+                return images;
             }
         },
 
@@ -93,12 +110,28 @@
                     .catch(error => {
                         console.log(error);
                     });
+            },
+
+            loadRandomImages()
+            {
+                axios.get('https://api.unsplash.com/search/photos?query=computing&per_page=30&client_id=4e452670da507128754b9877eeaea90b8447ae6aca120827df09ee0ba6eddf3a')
+                    .then(response => {
+                        this.randomImages = response.data.results;
+                    })
+                    .then(() => {
+                        this.loadingImages = false;
+                    })
+                    .catch(() => {
+
+                    });
             }
         },
 
         mounted()
         {
+            this._ = _;
             this.fetchServers();
+            this.loadRandomImages();
         }
     }
 </script>
@@ -108,6 +141,8 @@
 
         &__image {
             text-align: center;
+            height: 134px;
+            overflow-y: hidden;
         }
 
         &__title {
