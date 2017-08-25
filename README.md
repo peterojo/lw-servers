@@ -1,6 +1,6 @@
 # README #
 
-This is a Server Listing app, which was built as a PHP Developer application interview exercise for LeaseWeb
+This is a Server Listing app, built as an exercise for LeaseWeb
 ### Demo
 Click [here](http://lw-servers.haxolutely.com) to see a demo
 
