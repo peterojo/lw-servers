@@ -550,5 +550,3 @@ foreach ($b as $s) {
 		'price' => (double)trim($price)
 	];
 }
-
-//var_dump($c);exit;
