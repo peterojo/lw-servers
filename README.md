@@ -13,7 +13,7 @@ Server listing can be filtered with the following criteria:
 * Harddisk type
 * Location
 
-### Click here for setup instructions?
+### Click here for setup instructions
 
 [SETUP.md](./SETUP.md)
 
