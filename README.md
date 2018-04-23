@@ -1,8 +1,8 @@
 # README #
 
 This is a Server Listing app, built as an exercise for LeaseWeb
-### Demo
-Click [here](http://lw-servers.haxolutely.com) to see a demo
+~~### Demo
+~~Click [here](http://lw-servers.haxolutely.com) to see a demo
 
 ### How It Works
 
